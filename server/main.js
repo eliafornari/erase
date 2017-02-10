@@ -3,10 +3,11 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const https = require("https");
+const routes  = require('./routes');
 
 // Get our API routes
 const api = require('./routes/api');
-
 const app = express();
 
 // Parsers for POST data
@@ -20,9 +21,10 @@ app.use(express.static(path.join(__dirname, '/../dist')));
 app.use('/api', api);
 
 // Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../dist/index.html'));
-});
+// app.get('*', (req, res) => {
+//   // res.sendFile(path.join(__dirname, '/../dist/index.html'));
+// });
+app.get('*', routes.index);
 
 /**
  * Get port from environment and store in Express.
