@@ -3,3 +3,10 @@
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+
+# NODE MODULES #
+############
+node_modules
+bower_components
+src
