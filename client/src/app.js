@@ -265,10 +265,12 @@ $rootScope.getContentType('zine', 'my.zine.date desc');
           //........checks the width
             $scope.mobileQuery=window.matchMedia( "(max-width: 767px)" );
             $rootScope.isMobile=$scope.mobileQuery.matches;
+            console.log("isMobile:"+$rootScope.isMobile);
 
           //.........returning true if device
             if ($scope.checkDevice.any()){
               $rootScope.isDevice= true;
+              console.log("isDevice:"+$rootScope.isDevice);
             }else{
                 $rootScope.isDevice=false;
             }

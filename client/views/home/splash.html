@@ -9,8 +9,10 @@
 
 
 
-<div class="splash-arrow" ng-class="{'chromium-arrow': isChrome}">
+<div class="splash-arrow" ng-class="{'chromium-arrow': isChrome}" ng-if="isMobile&&isDevice">
   <arrow-directive></arrow-directive>
+  <h2>tap</h2>
+
 </div>
 
 </div>

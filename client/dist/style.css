@@ -45,6 +45,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@font-face {
+  font-family: 'helvetica-black';
+  src: url("../assets/font/Helvetica-Black.woff") format("woff"), url("../assets/font/Helvetica-Black.otf") format("otf");
+  font-weight: normal;
+  font-style: normal; }
 /*....................................SCSS VARIABLES..................................*/
 /*....................................................................................*/
 /*.................................................................................*/
@@ -178,7 +183,7 @@ a {
   cursor: pointer;
   font-size: 20px;
   line-height: 30px;
-  font-family: helvetica;
+  font-family: "helvetica-black";
   letter-spacing: 2px;
   /*  @if $media == large-desktop {
       @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
@@ -231,7 +236,7 @@ p {
 h1 {
   font-size: 50px;
   line-height: 50px;
-  font-family: helvetica;
+  font-family: "helvetica-black";
   text-transform: uppercase;
   letter-spacing: 2px;
   /*  @if $media == large-desktop {
@@ -244,7 +249,7 @@ h1 {
 h2 {
   font-size: 20px;
   line-height: 30px;
-  font-family: helvetica;
+  font-family: "helvetica-black";
   letter-spacing: 2px;
   /*  @if $media == large-desktop {
       @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
@@ -960,7 +965,7 @@ table {
 .btn {
   font-size: 20px;
   line-height: 30px;
-  font-family: helvetica;
+  font-family: "helvetica-black";
   letter-spacing: 2px;
   /*  @if $media == large-desktop {
       @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
@@ -979,11 +984,23 @@ table {
     .zine-book .zine-book-content .zine-book-image {
       width: 80vw;
       margin: auto;
-      display: block; }
+      display: block;
+      /*  @if $media == large-desktop {
+          @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
+        }*/ }
+      @media only screen and (min-width: 0px) and (max-width: 767px) {
+        .zine-book .zine-book-content .zine-book-image {
+          width: 100vw; } }
   .zine-book .zine-book-status {
     position: absolute;
     width: 50px;
     left: 50%;
     bottom: 0;
     margin-left: -25px;
-    text-align: center; }
+    text-align: center;
+    /*  @if $media == large-desktop {
+        @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
+      }*/ }
+    @media only screen and (min-width: 0px) and (max-width: 767px) {
+      .zine-book .zine-book-status {
+        bottom: 75px; } }

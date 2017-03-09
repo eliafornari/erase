@@ -13,10 +13,10 @@ $rootScope.enter=function(){
 
   $rootScope.splashScroll=0;
   $rootScope.windowHeight = $window.innerHeight;
-  if ($rootScope.isMobile && $rootScope.isDevice){
-    $rootScope.firstLoading = false;
-    $rootScope.windowHeight = $window.innerHeight + 60;
-  }else{
+  // if ($rootScope.isMobile && $rootScope.isDevice){
+  //   $rootScope.firstLoading = false;
+  //   $rootScope.windowHeight = $window.innerHeight + 60;
+  // }else{
 
 
     angular.element($window).bind("scroll", function() {
@@ -36,7 +36,7 @@ $rootScope.enter=function(){
     });
 
 
-  }
+  // }
 
 
   $rootScope.removeSplashMobile = false;

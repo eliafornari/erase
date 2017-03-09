@@ -1,13 +1,13 @@
 <div class="home" summary="home page" id="home" ng-controller="homeCtrl" ng-class="{'blockScroll': firstLoading, 'chromium': isChrome}">
 
 
-  <div class="splash" style="top: -{{splashScroll}}px !important;" ng-if="(!isMobile && !isDevice)" ng-show="firstLoading">
+  <div class="splash" style="top: -{{splashScroll}}px !important;" ng-if="(!isDevice)" ng-show="firstLoading">
     <!-- style="top:-{{splashScroll}}px !important;" -->
     <splash-directive></splash-directive>
   </div>
 
 
-  <div class="splash" ng-class="{'splash_gone':removeSplashMobile}" ng-if="(isMobile && isDevice)" ng-show="firstLoading">
+  <div class="splash" ng-class="{'splash_gone':removeSplashMobile}" ng-if="isMobile && isDevice" ng-show="firstLoading">
     <splash-directive></splash-directive>
   </div>
 

@@ -22,6 +22,9 @@
       width: 80vw;
       margin: auto;
       display: block;
+      @include respond-to(phone){
+        width: 100vw;
+      }
     }
   }
   .zine-book-status{
@@ -31,5 +34,8 @@
     bottom: 0;
     margin-left: -25px;
     text-align: center;
+    @include respond-to(phone){
+      bottom: 75px;
+    }
   }
 }

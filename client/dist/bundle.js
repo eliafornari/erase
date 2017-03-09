@@ -226,10 +226,12 @@ _angular2.default.module('myApp', ["ngRoute", "ngAnimate", "ngResource"]).run(['
     //........checks the width
     $scope.mobileQuery = window.matchMedia("(max-width: 767px)");
     $rootScope.isMobile = $scope.mobileQuery.matches;
+    console.log("isMobile:" + $rootScope.isMobile);
 
     //.........returning true if device
     if ($scope.checkDevice.any()) {
       $rootScope.isDevice = true;
+      console.log("isDevice:" + $rootScope.isDevice);
     } else {
       $rootScope.isDevice = false;
     }
@@ -320,24 +322,25 @@ angular.module('myApp').controller('homeCtrl', function ($rootScope, $location, 
 
   $rootScope.splashScroll = 0;
   $rootScope.windowHeight = $window.innerHeight;
-  if ($rootScope.isMobile && $rootScope.isDevice) {
-    $rootScope.firstLoading = false;
-    $rootScope.windowHeight = $window.innerHeight + 60;
-  } else {
+  // if ($rootScope.isMobile && $rootScope.isDevice){
+  //   $rootScope.firstLoading = false;
+  //   $rootScope.windowHeight = $window.innerHeight + 60;
+  // }else{
 
-    angular.element($window).bind("scroll", function () {
+  angular.element($window).bind("scroll", function () {
 
-      var scroll = this.pageYOffset;
-      $rootScope.splashScroll = scroll;
+    var scroll = this.pageYOffset;
+    $rootScope.splashScroll = scroll;
 
-      if (scroll >= $rootScope.windowHeight) {
-        $rootScope.firstLoading = false;
-        angular.element($window).unbind("scroll");
-      }
+    if (scroll >= $rootScope.windowHeight) {
+      $rootScope.firstLoading = false;
+      angular.element($window).unbind("scroll");
+    }
 
-      $scope.$apply();
-    });
-  }
+    $scope.$apply();
+  });
+
+  // }
 
   $rootScope.removeSplashMobile = false;
 
