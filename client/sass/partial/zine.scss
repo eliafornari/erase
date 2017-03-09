@@ -31,7 +31,7 @@
     position: absolute;
     width: 50px;
     left: 50%;
-    bottom: 0;
+    bottom: $margin-sides;
     margin-left: -25px;
     text-align: center;
     @include respond-to(phone){

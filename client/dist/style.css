@@ -1001,7 +1001,7 @@ table {
     position: absolute;
     width: 50px;
     left: 50%;
-    bottom: 0;
+    bottom: 25px;
     margin-left: -25px;
     text-align: center;
     /*  @if $media == large-desktop {
