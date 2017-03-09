@@ -1,0 +1,23 @@
+.styling{
+  position: relative;
+  margin:0;
+  display: block;
+  width:100vw;
+}
+
+
+.styling-ul{
+  width:70vw;
+  display: block;
+  margin: auto;
+  padding-top: $margin-top;
+  .styling-li{
+    width:100%;
+    .styling-h1{
+      width:100%;
+      text-align: left;
+
+    }
+  }
+
+}

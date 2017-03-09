@@ -1,0 +1,35 @@
+.zine{
+  width: 100vw;
+}
+.zine-back {
+  position: fixed;
+  margin-left: $margin-sides;
+  margin-top: $margin-sides;
+  z-index: $z-back;
+}
+
+.btn{
+  @include h2();
+}
+
+.zine-book{
+  position: relative;
+  width: 100%;
+  .zine-book-content{
+    width: 100vw;
+    height: 100vh;
+    .zine-book-image{
+      width: 80vw;
+      margin: auto;
+      display: block;
+    }
+  }
+  .zine-book-status{
+    position: absolute;
+    width: 50px;
+    left: 50%;
+    bottom: 0;
+    margin-left: -25px;
+    text-align: center;
+  }
+}

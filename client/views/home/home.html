@@ -1,0 +1,33 @@
+<div class="home" summary="home page" id="home" ng-controller="homeCtrl" ng-class="{'blockScroll': firstLoading, 'chromium': isChrome}">
+
+
+  <div class="splash" style="top: -{{splashScroll}}px !important;" ng-if="(!isMobile && !isDevice)" ng-show="firstLoading">
+    <!-- style="top:-{{splashScroll}}px !important;" -->
+    <splash-directive></splash-directive>
+  </div>
+
+
+  <div class="splash" ng-class="{'splash_gone':removeSplashMobile}" ng-if="(isMobile && isDevice)" ng-show="firstLoading">
+    <splash-directive></splash-directive>
+  </div>
+
+  <div class="home-feed">
+    <ul class="home-feed-ul">
+      <li ng-repeat="f in Feed" class="home-feed-li">
+        <table>
+          <tr>
+            <td>
+              <a href="/{{f.type}}/{{f.uid}}" class="home-feed-a">
+                <img src="{{f.data['zine.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-img" ng-if="f.type=='zine'">
+              </a>
+            </td>
+          </tr>
+        </table>
+
+      </li>
+    </ul>
+  </div>
+
+
+
+</div>

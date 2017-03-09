@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="appCtrl">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="KARISSA WALKER">
+    <meta name="keywords" content="karissawalker, karissa, walker, kw, karissa walker, styling">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+    <meta name=“author” title=“Elia Fornari | Qual Agency”>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <meta name="google-site-verification" content="ST9VRJnrhrVKBZCp-J1yBQAbA4vetQTCjOtELUhhE0E" />
+    <title>ERASE</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+    <!--
+    =======================================================================
+
+      Chapter | 2016
+
+      developed by Elia Fornari | ELIA LLC.
+
+    =======================================================================
+    -->
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC|Prata" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="/dist/style.css">
+
+    <script>
+
+    </script>
+
+
+
+
+
+    <base href="/">
+  </head>
+
+
+
+  <body class="body">
+
+<div class="logo" ng-if="hideSplash">
+  <img src="/assets/Erase_Logo.gif" alt="erase logo">
+</div>
+
+
+
+    <main ng-view class='main page' ng-hide="pageLoading" ng-class="{'scrolledSplash': !firstLoading}">
+    </main>
+
+
+
+  </body>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="dist/bundle.js"></script>
+</html>

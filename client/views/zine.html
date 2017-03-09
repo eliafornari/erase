@@ -1,0 +1,22 @@
+<div class="zine">
+
+  <div class="zine-back btn">
+    <a href="/">back</a>
+  </div>
+
+  <div class="zine-book" ng-click="nextZine(Zine.current.index)">
+    <div class="zine-book-content">
+      <table>
+        <tr>
+          <td>
+            <img src="{{Zine.current.url}}" alt="" class="zine-book-image">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <h2 class="zine-book-status">
+      {{Zine.current.index +1 }}/{{Zine.data['zine.page'].value.length}}
+    </h2>
+  </div>
+
+</div>

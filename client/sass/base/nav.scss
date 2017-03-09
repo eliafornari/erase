@@ -1,0 +1,98 @@
+
+
+.nav{
+  position: fixed;
+  width:100vw;
+  height:100vh;
+  top:0;
+  z-index:$z-nav;
+}
+
+
+.nav-content{
+  width: 600px;
+  margin: auto;
+  @include respond-to(phone){
+    width: 50vw;
+    margin: auto;
+  }
+}
+
+
+.nav-list{
+  display: inline-block;
+  width: 100px;
+  vertical-align: top;
+  margin-top: 8vh;
+  @include respond-to(phone){
+    width: 20vw;
+    margin-top: 3vh;
+  }
+  a{
+    @include paragraph();
+    font-family: helvetica;
+    display: block;
+    height:$line-height-p;
+  }
+}
+
+
+.nav-logo{
+  display: inline-block;
+  width:495px;
+  z-index: $z-logo;
+  @include respond-to(phone){
+    width: 50vw;
+  }
+  img{
+    display: block;
+    width:100%;
+    margin: auto;
+  }
+}
+
+
+
+
+.nav.nav-up{
+  width: 100px;
+  height: auto;
+  top:$margin-sides;
+  left: $margin-sides;
+  @include respond-to(phone){
+    width: auto;
+    left: auto;
+    top: auto;
+    bottom:$margin-sides;
+    right: $margin-sides;
+  }
+  .nav-content{
+    width: 130px;
+    @include respond-to(phone){
+      width: auto;
+    }
+    .nav-list{
+      width: 50px;
+      margin-top: 0;
+    }
+    .nav-logo{
+      width: 70px;
+    }
+  }
+}
+
+.nav-mobile-list{
+  width: 100vw;
+  height:100vh;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:$z-nav;
+  background-color: #FFFFFF;
+  .nav-a{
+    display: block;
+    width: 100%;
+    text-align: center;
+    clear: both;
+  }
+}

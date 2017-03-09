@@ -1,0 +1,38 @@
+<nav class="nav" ng-controller="navCtrl" ng-class="{'nav-up': !isLocation('/')}" ng-init="showNavMobile=false">
+  <!-- ng-show="isNav" -->
+  <table>
+    <tr>
+      <td>
+
+      <div class="nav-content">
+        <div class="nav-logo" ng-click="showNavMobile=!showNavMobile">
+          <a href="/">
+            <img src="/assets/FullSizeRender.png" alt="karissawalker" />
+          </a>
+        </div>
+        <div class="nav-list" ng-if="!isMobile">
+          <a href="/styling" class="nav-a" ng-class="{'active': isActive('/styling')}">styling</a>
+          <a href="/contact" class="nav-a" ng-class="{'active': isActive('/contact')}">contact</a>
+          <a href="/about" class="nav-a" ng-class="{'active': isActive('/about')}">about</a>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+
+  <div class="nav-mobile-list" ng-show="isMobile && showNavMobile">
+    <table>
+      <tr>
+        <td>
+          <a href="/styling" class="nav-a" ng-class="{'active': isActive('/styling')}" ng-click="showNavMobile=false">styling</a>
+          <a href="/contact" class="nav-a" ng-class="{'active': isActive('/contact')}" ng-click="showNavMobile=false">contact</a>
+          <a href="/about" class="nav-a" ng-class="{'active': isActive('/about')}" ng-click="showNavMobile=false">about</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+</nav>

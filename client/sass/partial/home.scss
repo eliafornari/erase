@@ -1,0 +1,38 @@
+.home{
+  position: relative;
+  margin:0;
+  display: block;
+  width:100vw;
+}
+
+.home-feed-content{
+    position: relative;
+    width:100vw;
+    height:100vh;
+    @include respond-to(phone){
+      width: 100vw;
+      height: calc(100vh - 60px);
+      overflow:hidden;
+    }
+}
+
+
+
+.home-feed{
+  display: block;
+  .home-feed-ul{
+    display: block;
+    height: auto;
+    .home-feed-li{
+      width: 100vw;
+      height: 100vh;
+      a{
+        img{
+          display: block;
+          width:60vw;
+          margin: auto;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+/*....................................SCSS VARIABLES..................................*/
+
+
+// ........................................................FONT WEIGHTS
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-heavy: 900;
+
+
+// ........................................................FONT SIZES
+$font-size-h1:50px;
+$font-size-h2:20px;
+$font-size-h3:11px;
+$font-size-p: 11px;
+
+$font-size-h1-mobile: 25px;
+$font-size-h2-mobile: 20px;
+$font-size-h3-mobile: 12px;
+$font-size-p-mobile: 12px;
+
+// ........................................................FONT FAMILIES
+// 'Playfair Display SC', serif
+// font-family: 'Prata', serif;
+$font-family-h1: helvetica;
+$font-family-h2: helvetica;
+$font-family-h3: helvetica;
+$font-family-p: helvetica;
+
+
+
+// ........................................................FONT LINEHEIGHTS
+$line-height-h1: 50px;
+$line-height-h2: 30px;
+$line-height-h3: 30px;
+$line-height-p: 24px;
+
+$line-height-h1-mobile: 40px;
+$line-height-h2-mobile: 30px;
+$line-height-h3-mobile: 20px;
+$line-height-p-mobile: 17px;
+
+
+$letter-spacing: 2px;
+$letter-spacing-h1: 2px;
+$letter-spacing-h2: 2px;
+$letter-spacing-h3: 2px;
+$letter-spacing-paragraph:2px;
+
+
+// ........................................................COLORS
+$black: #000000;
+$white: #FFFFFF;
+$yellow: #ede611;
+$green: #00FF00;
+$red:#FF0000;
+$pink:#f7c0cd;
+$grey:#a8a8a8;
+
+
+// ........................................................MARGINS
+$margin-sides: 25px;
+$margin-bottom: 35px;
+$margin-top: 200px;
+$margin-sides-mobile:10px;
+$margin-left-paragraph:5px;
+$margin-top-block:100px;
+$margin-top-li:50px;
+$margin-bottom-mobile:60px;
+
+// ........................................................TRANSITION TIMINGS
+$transition-extreme-slow: 1.4s;
+$transition-slow: .6s;
+$transition-medium: .4s;
+$transition-fast: .2s;
+
+
+
+// ........................................................Z-INDEXES
+$z-loader:15;
+$z-logo:11;
+$z-splash-mobile: 13;
+$z-back:13;
+$z-splash-enter: 11;
+$z-splash:11;
+
+
+$z-nav:5;
+
+
+/*....................................................................................*/

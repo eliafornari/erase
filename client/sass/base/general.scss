@@ -1,0 +1,308 @@
+/*....................................General settings..................................*/
+
+
+/*....................HIDING SCROLLBAR.....................*/
+::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+}
+
+::-moz-scrollbar {
+    display: none;
+}
+::-ms-scrollbar {
+    display: none;
+}
+::-o-scrollbar {
+    display: none;
+}
+::scrollbar {
+    display: none;
+}
+
+
+body::-webkit-scrollbar {display:none;}
+body::-moz-scrollbar {display:none;}
+body::-o-scrollbar {display:none;}
+body::-google-ms-scrollbar {display:none;}
+body::-khtml-scrollbar {display:none;}
+
+*{
+  -webkit-overflow-scrolling: touch;
+  transform-style: flat;
+  -webkit-transform-style: flat;
+  -o-transform-style: flat;
+  -moz-transform-style: flat;
+  // overflow: -moz-scrollbars-none;
+
+
+  -ms-overflow-style: none;
+
+  @include respond-to(phone-device){
+    -webkit-backface-visibility: hidden;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+/*.....................TEXT MARK STYLES......................*/
+
+::-moz-selection {
+    background: transparent;
+    text-shadow: none;
+}
+
+
+::selection {
+    background: transparent;
+    text-shadow: none;
+}
+
+
+
+a:active{
+
+}
+
+.ng-click-active{
+
+}
+
+
+/*.....................ACTIVE CLASSES......................*/
+
+.active{
+  opacity:0.1;
+}
+
+
+
+
+
+/*....................HIDING SCROLLBAR.....................*/
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+
+*{
+  -webkit-overflow-scrolling: touch;
+}
+
+
+
+
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+
+
+/*.....................GENERAL STYLES......................*/
+
+html{
+  font-family: helvetica;
+  width: 100%;
+  margin: 0, 0;
+  padding: 0, 0;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+
+body {
+  width: 100vw;
+  height: 100%;
+  margin: 0, 0;
+  padding: 0, 0;
+  display: block;
+  position: relative;
+
+}
+
+
+p, a, li {
+  font-size: $font-size-p;
+  list-style-type: none;
+  letter-spacing:$letter-spacing;
+  color: #000000;
+  font-family: helvetica;
+}
+
+
+input, textarea, select, a, li {
+  text-decoration: none;
+}
+
+
+
+a{
+  cursor:pointer;
+  @include h2();
+  @include hover-effect-color(#000000,#e2e2e2);
+
+}
+
+p{
+  @include paragraph();
+}
+
+h1{
+  @include h1();
+}
+
+h2{
+  @include h2();
+}
+
+
+
+
+
+/*.........................MAIN............................*/
+
+main {
+  // width:  calc(100vw - 100px);
+  width: 100vw;
+  height: 200vh;
+  position: relative;
+  display: block;
+  list-style-type: none;
+  @include respond-to(phone-device){
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+  }
+}
+
+main.scrolledSplash{
+  height:100vh;
+  overflow-y: scroll;
+}
+
+
+.blockScroll{
+  overflow: hidden !important;
+  position: fixed!important;
+}
+
+
+.logo{
+  position: absolute;
+  top:50%;
+  left:50%;
+}
+
+
+table{
+  width: 100%;
+  height: 100%;
+  tr{
+    td{
+      vertical-align: middle;
+    }
+  }
+}
+
+
+
+$animation-speed:1s;
+$animation-bezier:ease;
+
+
+@keyframes pageenter {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+@-webkit-keyframes pageenter {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+@-moz-keyframes pageenter {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+@-ms-keyframes pageenter {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+@-o-keyframes pageenter {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+/*.................................NG ENTER/LEAVE..................................*/
+
+$fade-in: 1s;
+
+.page.ng-enter {
+  animation: pageenter $fade-in both ease 0s;
+  -webkit-animation: pageenter $fade-in both ease 0s;
+  -moz-animation: pageenter $fade-in both ease 0s;
+  -ms-animation: pageenter $fade-in both ease 0s;
+  -o-animation: pageenter $fade-in both ease 0s;
+}
+
+.page.page-home.ng-leave {
+  animation: pageleave 0s ease;
+  -webkit-animation: pageleave 0s ease;
+  -moz-animation: pageleave 0s ease;
+  -ms-animation: pageleave 0s ease;
+  -o-animation: pageleave 0s ease;
+    // opacity: 0;
+}
+
+.ng-enter       { z-index: 8888; }
+.ng-leave       { z-index: 9999; }
+
+
+
+// .page.ng-hide{
+//   opacity:0;
+// }
+
+.page.ng-enter{
+  opacity:1;
+  -webkit-transition: opacity $animation-speed $animation-bezier;
+  -moz-transition: opacity $animation-speed $animation-bezier;
+  -ms-transition: opacity $animation-speed $animation-bezier;
+  -o-transition: opacity $animation-speed $animation-bezier;
+  transition: opacity $animation-speed $animation-bezier;
+}
+
+
+
+
+
+
+/*.............................NG-CLOAK............................*/
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+  cursor: pointer;
+}
