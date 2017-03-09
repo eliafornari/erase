@@ -3,8 +3,8 @@
 }
 .zine-back {
   position: fixed;
-  margin-left: $margin-sides;
-  margin-top: $margin-sides;
+  left: $margin-sides;
+  bottom: $margin-sides;
   z-index: $z-back;
 }
 

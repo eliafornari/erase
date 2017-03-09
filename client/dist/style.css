@@ -284,9 +284,15 @@ main.scrolledSplash {
   position: fixed !important; }
 
 .logo {
-  position: absolute;
-  top: 50%;
-  left: 50%; }
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  width: 100px;
+  height: auto;
+  display: block; }
+  .logo img {
+    width: 100%;
+    display: block; }
 
 table {
   width: 100%;
@@ -958,8 +964,8 @@ table {
 
 .zine-back {
   position: fixed;
-  margin-left: 25px;
-  margin-top: 25px;
+  left: 25px;
+  bottom: 25px;
   z-index: 13; }
 
 .btn {

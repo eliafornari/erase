@@ -203,9 +203,16 @@ main.scrolledSplash{
 
 
 .logo{
-  position: absolute;
-  top:50%;
-  left:50%;
+  position: fixed;
+  top:$margin-sides;
+  left:$margin-sides;
+  width: 100px;
+  height:auto;
+  display: block;
+  img{
+    width: 100%;
+    display: block;
+  }
 }
 
 
