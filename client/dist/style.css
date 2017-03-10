@@ -774,11 +774,16 @@ table {
     height: auto; }
     .home-feed .home-feed-ul .home-feed-li {
       width: 100vw;
-      height: 100vh; }
-      .home-feed .home-feed-ul .home-feed-li a img {
+      height: auto;
+      margin-bottom: 20vh; }
+      .home-feed .home-feed-ul .home-feed-li:nth-child(1) {
+        margin-top: 20vh; }
+      .home-feed .home-feed-ul .home-feed-li .home-feed-zineimg {
         display: block;
         width: 60vw;
         margin: auto; }
+      .home-feed .home-feed-ul .home-feed-li .home-feed-image {
+        position: relative; }
 
 .styling {
   position: relative;
@@ -991,6 +996,7 @@ table {
       width: 80vw;
       margin: auto;
       display: block;
+      z-index: 9;
       /*  @if $media == large-desktop {
           @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
         }*/ }
@@ -1010,3 +1016,23 @@ table {
     @media only screen and (min-width: 0px) and (max-width: 767px) {
       .zine-book .zine-book-status {
         bottom: 75px; } }
+
+.zine-book-click {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10; }
+  .zine-book-click .zine-book-click-right {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    right: 0; }
+  .zine-book-click .zine-book-click-left {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 0; }

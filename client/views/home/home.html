@@ -17,13 +17,13 @@
         <table>
           <tr>
             <td>
-              <a href="/{{f.type}}/{{f.uid}}" class="home-feed-a">
-                <img src="{{f.data['zine.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-img" ng-if="f.type=='zine'">
+              <a href="/{{f.type}}/{{f.uid}}" class="home-feed-a" ng-if="f.type=='zine'">
+                <img src="{{f.data['zine.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-zineimg" >
               </a>
+              <img src="{{f.data['image.image'].value.main.url}}" alt="{{f.uid}}" class="home-feed-image" ng-if="f.type=='image'" style="left:{{f.data['image.left'].value}}vw;width:{{f.data['image.width'].value}}vw">
             </td>
           </tr>
         </table>
-
       </li>
     </ul>
   </div>

@@ -34,12 +34,19 @@ $scope.nextZine=(index)=>{
   if(index<$rootScope.Zine.data['zine.page'].value.length-1){
     next = index+1;
   }else{next = 0}
-  console.log(next);
-
   $rootScope.Zine.current.url=$rootScope.Zine.data['zine.page'].value[next].image.value.main.url;
   $rootScope.Zine.current.index=next;
 
 
+}
+
+$scope.prevZine=(index)=>{
+  var prev;
+  if(index>0){
+    prev = index-1;
+  }else{prev = $rootScope.Zine.data['zine.page'].value.length-1}
+  $rootScope.Zine.current.url=$rootScope.Zine.data['zine.page'].value[prev].image.value.main.url;
+  $rootScope.Zine.current.index=prev;
 }
 
 

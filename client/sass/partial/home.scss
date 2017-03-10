@@ -25,13 +25,21 @@
     height: auto;
     .home-feed-li{
       width: 100vw;
-      height: 100vh;
+      height: auto;
+      margin-bottom: 20vh;
+      &:nth-child(1){
+        margin-top: 20vh;
+      }
       a{
-        img{
-          display: block;
-          width:60vw;
-          margin: auto;
-        }
+
+      }
+      .home-feed-zineimg{
+        display: block;
+        width:60vw;
+        margin: auto;
+      }
+      .home-feed-image{
+        position: relative;
       }
     }
   }

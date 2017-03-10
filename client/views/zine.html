@@ -4,11 +4,18 @@
     <a href="/">back</a>
   </div>
 
-  <div class="zine-book" ng-click="nextZine(Zine.current.index)">
+  <div class="zine-book">
     <div class="zine-book-content">
+
       <table>
         <tr>
           <td>
+            <div class="zine-book-click">
+              <div class="zine-book-click-left" ng-click="prevZine(Zine.current.index)">
+              </div>
+              <div class="zine-book-click-right" ng-click="nextZine(Zine.current.index)">
+              </div>
+            </div>
             <img src="{{Zine.current.url}}" alt="" class="zine-book-image">
           </td>
         </tr>

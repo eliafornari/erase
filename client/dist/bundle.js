@@ -179,7 +179,7 @@ _angular2.default.module('myApp', ["ngRoute", "ngAnimate", "ngResource"]).run(['
     });
   };
 
-  $rootScope.getContentType('zine', 'my.zine.date desc');
+  $rootScope.getContentType('', 'my.zine.date desc, my.image.date desc');
 
   //MOBILE
 
@@ -1866,10 +1866,19 @@ angular.module('myApp').controller('zineCtrl', function ($rootScope, $location, 
     } else {
       next = 0;
     }
-    console.log(next);
-
     $rootScope.Zine.current.url = $rootScope.Zine.data['zine.page'].value[next].image.value.main.url;
     $rootScope.Zine.current.index = next;
+  };
+
+  $scope.prevZine = function (index) {
+    var prev;
+    if (index > 0) {
+      prev = index - 1;
+    } else {
+      prev = $rootScope.Zine.data['zine.page'].value.length - 1;
+    }
+    $rootScope.Zine.current.url = $rootScope.Zine.data['zine.page'].value[prev].image.value.main.url;
+    $rootScope.Zine.current.index = prev;
   };
 });
 

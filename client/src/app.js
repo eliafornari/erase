@@ -210,7 +210,7 @@ $rootScope.getContentType = function(type, orderField){
 
 };
 
-$rootScope.getContentType('zine', 'my.zine.date desc');
+$rootScope.getContentType('', 'my.zine.date desc, my.image.date desc');
 
 
 
