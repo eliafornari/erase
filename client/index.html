@@ -63,7 +63,11 @@
 
 <div class="perspective-container" ng-class="{'scrolledSplash': !firstLoading}">
   <div class="main-container" ng-class="{'scrolledSplash': !firstLoading, 'nav-in': showNav}">
-    <main ng-view class='main page' ng-hide="pageLoading" ng-class="{'scrolledSplash': !firstLoading, 'nav-in': showNav}">
+    <div class="nav-clickout" ng-show="showNav" ng-click="closeNav()">
+
+    </div>
+    <!-- , 'nav-in': showNav -->
+    <main ng-view class='main page' ng-hide="pageLoading" ng-class="{'scrolledSplash': !firstLoading}">
     </main>
   </div>
 

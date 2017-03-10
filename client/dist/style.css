@@ -285,14 +285,6 @@ main.scrolledSplash {
   position: relative;
   top: auto; }
 
-main.nav-in {
-  transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
-  -webkit-transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
-  transition: inherit;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  overflow: hidden; }
-
 .main-container.scrolledSplash {
   height: auto;
   position: relative;
@@ -308,8 +300,8 @@ main.nav-in {
   background-color: #FFFFFF; }
 
 .main-container.nav-in {
-  transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
-  -webkit-transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
+  transform: translate3d(-26vw, 0, 0) rotateY(-13deg);
+  -webkit-transform: translate3d(-26vw, 0, 0) rotateY(-13deg);
   transition: inherit;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -323,8 +315,8 @@ main.nav-in {
   bottom: 0;
   height: auto;
   width: 100%;
-  -webkit-perspective: 800px;
-  perspective: 800px;
+  -webkit-perspective: 100vw;
+  perspective: 100vw;
   -webkit-perspective-origin: 112% 50%;
   perspective-origin: 112% 50%;
   -webkit-transition: all 0.3s ease-in-out;
@@ -336,6 +328,15 @@ main.nav-in {
 .perspective-container.scrolledSplash {
   height: auto;
   position: relative; }
+
+.nav-clickout {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: 999; }
 
 .blockScroll {
   overflow: hidden !important; }
