@@ -311,10 +311,12 @@ main.scrolledSplash {
   overflow: hidden; }
 
 .main-container.nav-in-remove.nav-in-remove-active {
-  height: 100vh; }
+  height: 100vh;
+  overflow: hidden; }
 
 .main-container.nav-in-add.nav-in-add-active {
-  height: 100vh; }
+  height: 100vh;
+  overflow: hidden; }
 
 .perspective-container {
   position: fixed;
