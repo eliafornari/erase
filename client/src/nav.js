@@ -31,7 +31,7 @@ angular.module('myApp')
       console.log('not home');
         $rootScope.pageLoading = false;
     }
-    if($scope.getFirstPath()=='' || $scope.getFirstPath()=='zine' || $scope.getFirstPath()=='project' || $scope.getFirstPath()=='media'){
+    if($scope.getFirstPath()=='' || $scope.getFirstPath()=='feed'){
       $rootScope.isFeed=true;
     }else {$rootScope.isFeed=false;}
     setTimeout(function(){

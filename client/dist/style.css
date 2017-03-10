@@ -300,12 +300,21 @@ main.scrolledSplash {
   background-color: #FFFFFF; }
 
 .main-container.nav-in {
-  transform: translate3d(-26vw, 0, 0) rotateY(-13deg);
-  -webkit-transform: translate3d(-26vw, 0, 0) rotateY(-13deg);
+  height: 100vh;
+  transform: translate3d(-28vw, 0, 0) rotateY(-15deg);
+  -webkit-transform: translate3d(-26vw, 0, 0) rotateY(-15deg);
+  -ms-transform: translate3d(-28vw, 0, 0) rotateY(-15deg);
+  -moz-transform: translate3d(-28vw, 0, 0) rotateY(-15deg);
   transition: inherit;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   overflow: hidden; }
+
+.main-container.nav-in-remove.nav-in-remove-active {
+  height: 100vh; }
+
+.main-container.nav-in-add.nav-in-add-active {
+  height: 100vh; }
 
 .perspective-container {
   position: fixed;
@@ -319,10 +328,10 @@ main.scrolledSplash {
   perspective: 100vw;
   -webkit-perspective-origin: 112% 50%;
   perspective-origin: 112% 50%;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   background-color: #000000; }
 
 .perspective-container.scrolledSplash {
@@ -330,7 +339,7 @@ main.scrolledSplash {
   position: relative; }
 
 .nav-clickout {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 255, 0, 0.4);
   position: absolute;
   top: 0;
   left: 0;
@@ -356,6 +365,8 @@ main.scrolledSplash {
 .logo.nav-in {
   transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
   -webkit-transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
+  -ms-transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
+  -moz-transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
   transition: inherit;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -470,15 +481,15 @@ table {
 
 .nav-in-add.nav-in-add-active {
   transition: 1s ease;
-  -webkit-transition: 1s ease;
-  -moz-transition: 1s ease;
-  -ms-transition: 1s ease; }
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease; }
 
 .nav-in-remove.nav-in-remove-active {
-  transition: 1s ease;
-  -webkit-transition: 1s ease;
-  -moz-transition: 1s ease;
-  -ms-transition: 1s ease; }
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease; }
 
 .splash {
   display: block;

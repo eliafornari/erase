@@ -103,17 +103,17 @@ angular.module('myApp', ["ngRoute", "ngAnimate", "ngResource"])
 
 
 
-    .when('/zine/:zine', {
+    .when('/feed/zine/:zine', {
       templateUrl: 'views/zine.html',
       controller: 'zineCtrl'
     })
 
-    .when('/project/:project', {
+    .when('/feed/project/:project', {
       templateUrl: 'views/about.html',
       controller: 'projectCtrl'
     })
 
-    .when('/media/:media', {
+    .when('/feed/media/:media', {
       templateUrl: 'views/media.html',
       controller: 'mediaCtrl'
     })

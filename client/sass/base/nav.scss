@@ -55,15 +55,15 @@
 }
 
 .nav-in-add.nav-in-add-active{
-  transition: 1s ease;
-  -webkit-transition: 1s ease;
-  -moz-transition: 1s ease;
-  -ms-transition: 1s ease;
+  transition: 1s $nav-transition;
+  -webkit-transition: $nav-speed $nav-transition;
+  -moz-transition: $nav-speed $nav-transition;
+  -ms-transition: $nav-speed $nav-transition;
 }
 
 .nav-in-remove.nav-in-remove-active{
-  transition: 1s ease;
-  -webkit-transition: 1s ease;
-  -moz-transition: 1s ease;
-  -ms-transition: 1s ease;
+  transition: $nav-speed $nav-transition;
+  -webkit-transition: $nav-speed $nav-transition;
+  -moz-transition: $nav-speed $nav-transition;
+  -ms-transition: $nav-speed $nav-transition;
 }

@@ -109,13 +109,13 @@ _angular2.default.module('myApp', ["ngRoute", "ngAnimate", "ngResource"]).run(['
 
   /*............................. Take-all routing ........................*/
 
-  .when('/zine/:zine', {
+  .when('/feed/zine/:zine', {
     templateUrl: 'views/zine.html',
     controller: 'zineCtrl'
-  }).when('/project/:project', {
+  }).when('/feed/project/:project', {
     templateUrl: 'views/about.html',
     controller: 'projectCtrl'
-  }).when('/media/:media', {
+  }).when('/feed/media/:media', {
     templateUrl: 'views/media.html',
     controller: 'mediaCtrl'
   }).when('/contact', {
@@ -395,7 +395,7 @@ angular.module('myApp').controller('navCtrl', function ($scope, $location, $root
       console.log('not home');
       $rootScope.pageLoading = false;
     }
-    if ($scope.getFirstPath() == '' || $scope.getFirstPath() == 'zine' || $scope.getFirstPath() == 'project' || $scope.getFirstPath() == 'media') {
+    if ($scope.getFirstPath() == '' || $scope.getFirstPath() == 'feed' || $scope.getFirstPath() == 'project' || $scope.getFirstPath() == 'media') {
       $rootScope.isFeed = true;
     } else {
       $rootScope.isFeed = false;
