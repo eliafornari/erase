@@ -4,13 +4,14 @@ angular.module('myApp')
 .controller('navCtrl', function($scope, $location, $rootScope, $routeParams, $timeout,	$http){
 
   $rootScope.isNavOpen = false;
+  $rootScope.showNav = false;
 
-  $scope.openNav = function(){
-    $rootScope.isNavOpen = !$rootScope.isNavOpen;
+  $rootScope.openNav = function(){
+    $rootScope.showNav = !$rootScope.showNav;
   }
 
-  $scope.closeNav = function(){
-    $rootScope.isNavOpen = false;
+  $rootScope.closeNav = function(){
+    $rootScope.showNav = false;
   }
 
   $rootScope.isLocation= (location)=>{
@@ -20,6 +21,9 @@ angular.module('myApp')
   }
 
 
+  $rootScope.isFeed=true;
+
+
 
   $scope.$on('$routeChangeSuccess', function(){
     console.log($location.path());
@@ -27,6 +31,9 @@ angular.module('myApp')
       console.log('not home');
         $rootScope.pageLoading = false;
     }
+    if($scope.getFirstPath()=='' || $scope.getFirstPath()=='zine' || $scope.getFirstPath()=='project' || $scope.getFirstPath()=='media'){
+      $rootScope.isFeed=true;
+    }else {$rootScope.isFeed=false;}
     setTimeout(function(){
       $rootScope.pageLoading = false;
       $rootScope.$apply();

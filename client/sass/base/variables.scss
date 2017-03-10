@@ -55,7 +55,7 @@ $green: #00FF00;
 $red:#FF0000;
 $pink:#f7c0cd;
 $grey:#a8a8a8;
-
+$almost-black:rgba(10,10,10,1);
 
 // ........................................................MARGINS
 $margin-sides: 25px;
@@ -77,11 +77,14 @@ $transition-fast: .2s;
 
 // ........................................................Z-INDEXES
 $z-loader:15;
-$z-logo:11;
+
+$z-splash-enter: 14;
+$z-splash:14;
+$z-logo:13;
 $z-splash-mobile: 13;
+$z-pop:13;
 $z-back:13;
-$z-splash-enter: 11;
-$z-splash:11;
+
 
 $z-zine-book-click:10;
 $z-zine-book-image:9;

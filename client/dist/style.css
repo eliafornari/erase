@@ -140,7 +140,7 @@ body::-khtml-scrollbar {
 
 /*.....................ACTIVE CLASSES......................*/
 .active {
-  opacity: 0.1; }
+  color: #FFFFFF !important; }
 
 /*....................HIDING SCROLLBAR.....................*/
 ::-webkit-scrollbar {
@@ -163,11 +163,14 @@ html {
 
 body {
   width: 100vw;
-  height: 100%;
+  height: 200vh;
   margin: 0, 0;
   padding: 0, 0;
   display: block;
   position: relative; }
+
+body.scrolledSplash {
+  height: auto; }
 
 p, a, li {
   font-size: 11px;
@@ -262,10 +265,12 @@ h2 {
 /*.........................MAIN............................*/
 main {
   width: 100vw;
-  height: 200vh;
-  position: relative;
+  height: auto;
+  position: fixed;
+  top: 0;
   display: block;
   list-style-type: none;
+  background-color: #FFFFFF;
   /*  @if $media == large-desktop {
       @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
     }*/ }
@@ -276,12 +281,64 @@ main {
       position: fixed; } }
 
 main.scrolledSplash {
-  height: 100vh;
-  overflow-y: scroll; }
+  height: auto;
+  position: relative;
+  top: auto; }
+
+main.nav-in {
+  transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
+  -webkit-transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
+  transition: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden; }
+
+.main-container.scrolledSplash {
+  height: auto;
+  position: relative;
+  top: auto; }
+
+.main-container {
+  width: 100vw;
+  height: auto;
+  position: fixed;
+  top: 0;
+  display: block;
+  list-style-type: none;
+  background-color: #FFFFFF; }
+
+.main-container.nav-in {
+  transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
+  -webkit-transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
+  transition: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden; }
+
+.perspective-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  -webkit-perspective-origin: 112% 50%;
+  perspective-origin: 112% 50%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #000000; }
+
+.perspective-container.scrolledSplash {
+  height: auto;
+  position: relative; }
 
 .blockScroll {
-  overflow: hidden !important;
-  position: fixed !important; }
+  overflow: hidden !important; }
 
 .logo {
   position: fixed;
@@ -289,10 +346,19 @@ main.scrolledSplash {
   left: 25px;
   width: 100px;
   height: auto;
-  display: block; }
+  display: block;
+  z-index: 13; }
   .logo img {
     width: 100%;
     display: block; }
+
+.logo.nav-in {
+  transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
+  -webkit-transform: translate3d(-20vw, 0, 0) rotateY(-13deg);
+  transition: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden; }
 
 table {
   width: 100%;
@@ -300,31 +366,6 @@ table {
   table tr td {
     vertical-align: middle; }
 
-@keyframes pageenter {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-@-webkit-keyframes pageenter {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-@-moz-keyframes pageenter {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-@-ms-keyframes pageenter {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-@-o-keyframes pageenter {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
 /*.................................NG ENTER/LEAVE..................................*/
 .page.ng-enter {
   animation: pageenter 1s both ease 0s;
@@ -332,27 +373,6 @@ table {
   -moz-animation: pageenter 1s both ease 0s;
   -ms-animation: pageenter 1s both ease 0s;
   -o-animation: pageenter 1s both ease 0s; }
-
-.page.page-home.ng-leave {
-  animation: pageleave 0s ease;
-  -webkit-animation: pageleave 0s ease;
-  -moz-animation: pageleave 0s ease;
-  -ms-animation: pageleave 0s ease;
-  -o-animation: pageleave 0s ease; }
-
-.ng-enter {
-  z-index: 8888; }
-
-.ng-leave {
-  z-index: 9999; }
-
-.page.ng-enter {
-  opacity: 1;
-  -webkit-transition: opacity 1s ease;
-  -moz-transition: opacity 1s ease;
-  -ms-transition: opacity 1s ease;
-  -o-transition: opacity 1s ease;
-  transition: opacity 1s ease; }
 
 /*.............................NG-CLOAK............................*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -365,10 +385,20 @@ table {
 
 .nav {
   position: fixed;
-  width: 100vw;
+  width: 30vw;
   height: 100vh;
   top: 0;
-  z-index: 5; }
+  right: -30vw;
+  z-index: 5;
+  background-color: #000000; }
+
+.pop {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 13; }
+  .pop .pop-close {
+    color: #FFFFFF; }
 
 .nav-content {
   width: 600px;
@@ -391,89 +421,70 @@ table {
     }*/ }
   @media only screen and (min-width: 0px) and (max-width: 767px) {
     .nav-list {
-      width: 20vw;
+      width: 30vw;
       margin-top: 3vh; } }
   .nav-list a {
-    font-size: 11px;
-    line-height: 24px;
-    font-family: helvetica;
-    font-weight: 300;
+    font-size: 50px;
+    line-height: 50px;
+    font-family: "helvetica-black";
+    text-transform: uppercase;
     letter-spacing: 2px;
     /*  @if $media == large-desktop {
         @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
       }*/
-    font-family: helvetica;
     display: block;
-    height: 24px; }
+    height: 50px;
+    color: #0a0a0a;
+    transition: color 0.4s ease;
+    -webkit-transition: color 0.4s ease;
+    -moz-transition: color 0.4s ease;
+    -ms-transition: color 0.4s ease;
+    -o-transition: color 0.4s ease; }
     @media only screen and (min-width: 0px) and (max-width: 767px) {
       .nav-list a {
-        font-size: 12px;
-        line-height: 17px; } }
+        font-size: 25px; } }
+    .nav-list a:hover {
+      color: #FFFFFF;
+      /*  @if $media == large-desktop {
+          @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
+        }*/
+      /*  @if $media == large-desktop {
+          @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
+        }*/
+      /*  @if $media == large-desktop {
+          @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
+        }*/ }
+      @media only screen and (min-width: 0px) and (max-device-width: 767px) {
+        .nav-list a:hover {
+          color: #0a0a0a !important; } }
+      @media only screen and (min-device-width: 768px) and (max-device-width: 1022px) and (orientation: portrait) {
+        .nav-list a:hover {
+          color: #0a0a0a !important; } }
+      @media only screen and (min-device-width: 768px) and (max-device-width: 1022px) and (orientation: landscape) {
+        .nav-list a:hover {
+          color: #0a0a0a !important; } }
 
-.nav-logo {
-  display: inline-block;
-  width: 495px;
-  z-index: 11;
-  /*  @if $media == large-desktop {
-      @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
-    }*/ }
-  @media only screen and (min-width: 0px) and (max-width: 767px) {
-    .nav-logo {
-      width: 50vw; } }
-  .nav-logo img {
-    display: block;
-    width: 100%;
-    margin: auto; }
+.nav-in {
+  right: 0vw; }
 
-.nav.nav-up {
-  width: 100px;
-  height: auto;
-  top: 25px;
-  left: 25px;
-  /*  @if $media == large-desktop {
-      @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
-    }*/ }
-  @media only screen and (min-width: 0px) and (max-width: 767px) {
-    .nav.nav-up {
-      width: auto;
-      left: auto;
-      top: auto;
-      bottom: 25px;
-      right: 25px; } }
-  .nav.nav-up .nav-content {
-    width: 130px;
-    /*  @if $media == large-desktop {
-        @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
-      }*/ }
-    @media only screen and (min-width: 0px) and (max-width: 767px) {
-      .nav.nav-up .nav-content {
-        width: auto; } }
-    .nav.nav-up .nav-content .nav-list {
-      width: 50px;
-      margin-top: 0; }
-    .nav.nav-up .nav-content .nav-logo {
-      width: 70px; }
+.nav-in-add.nav-in-add-active {
+  transition: 1s ease;
+  -webkit-transition: 1s ease;
+  -moz-transition: 1s ease;
+  -ms-transition: 1s ease; }
 
-.nav-mobile-list {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  background-color: #FFFFFF; }
-  .nav-mobile-list .nav-a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    clear: both; }
+.nav-in-remove.nav-in-remove-active {
+  transition: 1s ease;
+  -webkit-transition: 1s ease;
+  -moz-transition: 1s ease;
+  -ms-transition: 1s ease; }
 
 .splash {
   display: block;
   width: 100vw;
   height: 100vh;
   background-color: #FFFFFF;
-  z-index: 11;
+  z-index: 14;
   background-color: #FFFFFF;
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.3); }
 
@@ -503,7 +514,7 @@ table {
 .splash-enter {
   position: relative;
   margin: auto;
-  z-index: 11;
+  z-index: 14;
   width: 200px;
   bottom: 200px;
   height: 200px;
@@ -775,9 +786,9 @@ table {
     .home-feed .home-feed-ul .home-feed-li {
       width: 100vw;
       height: auto;
-      margin-bottom: 20vh; }
+      padding-bottom: 20vh; }
       .home-feed .home-feed-ul .home-feed-li:nth-child(1) {
-        margin-top: 20vh; }
+        padding-top: 20vh; }
       .home-feed .home-feed-ul .home-feed-li .home-feed-zineimg {
         display: block;
         width: 60vw;
@@ -888,52 +899,17 @@ table {
 
 .about {
   width: 100vw;
+  height: auto; }
+
+.about-image {
+  width: 100vw;
   height: 100vh; }
-
-.about-video {
-  position: absolute;
-  width: 30vw;
-  height: 80vh;
-  top: 50%;
-  left: 50%;
-  margin-top: -40vh;
-  margin-left: -15vw;
-  background-color: #000000;
-  /*  @if $media == large-desktop {
-      @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
-    }*/ }
-  @media only screen and (min-width: 0px) and (max-width: 767px) {
-    .about-video {
-      position: relative;
-      width: 80vw;
-      margin-left: -40vw;
-      top: 40%; } }
-  .about-video video {
-    width: 90%;
-    height: 100%;
+  .about-image img {
+    display: block;
+    padding-top: 10vh;
+    width: 80vw;
     margin: auto;
-    display: block; }
-
-.about-text {
-  position: fixed;
-  right: 25px;
-  top: 50%;
-  height: 100px;
-  margin-top: -50px;
-  width: 27vw;
-  /*  @if $media == large-desktop {
-      @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
-    }*/ }
-  @media only screen and (min-width: 0px) and (max-width: 767px) {
-    .about-text {
-      position: relative;
-      width: 80vw;
-      margin-left: -40vw;
-      left: 50%;
-      right: auto; } }
-  .about-text p {
-    width: 100%;
-    height: 100%; }
+    padding-bottom: 10vh; }
 
 .contact {
   width: 100vw;

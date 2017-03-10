@@ -2,11 +2,24 @@
 
 .nav{
   position: fixed;
-  width:100vw;
+  width:30vw;
   height:100vh;
   top:0;
+  right:-30vw;
   z-index:$z-nav;
+  background-color: #000000;
 }
+
+.pop{
+  position: fixed;
+  top:$margin-sides;
+  right:$margin-sides;
+  z-index:$z-pop;
+  .pop-close{
+    color: $white;
+  }
+}
+
 
 
 .nav-content{
@@ -25,74 +38,32 @@
   vertical-align: top;
   margin-top: 8vh;
   @include respond-to(phone){
-    width: 20vw;
+    width: 30vw;
     margin-top: 3vh;
   }
   a{
-    @include paragraph();
-    font-family: helvetica;
+    @include h1();
     display: block;
-    height:$line-height-p;
+    height:$line-height-h1;
+    @include hover-effect-color($almost-black, $white);
   }
 }
 
 
-.nav-logo{
-  display: inline-block;
-  width:495px;
-  z-index: $z-logo;
-  @include respond-to(phone){
-    width: 50vw;
-  }
-  img{
-    display: block;
-    width:100%;
-    margin: auto;
-  }
+.nav-in{
+  right:0vw;
 }
 
-
-
-
-.nav.nav-up{
-  width: 100px;
-  height: auto;
-  top:$margin-sides;
-  left: $margin-sides;
-  @include respond-to(phone){
-    width: auto;
-    left: auto;
-    top: auto;
-    bottom:$margin-sides;
-    right: $margin-sides;
-  }
-  .nav-content{
-    width: 130px;
-    @include respond-to(phone){
-      width: auto;
-    }
-    .nav-list{
-      width: 50px;
-      margin-top: 0;
-    }
-    .nav-logo{
-      width: 70px;
-    }
-  }
+.nav-in-add.nav-in-add-active{
+  transition: 1s ease;
+  -webkit-transition: 1s ease;
+  -moz-transition: 1s ease;
+  -ms-transition: 1s ease;
 }
 
-.nav-mobile-list{
-  width: 100vw;
-  height:100vh;
-  position: fixed;
-  top:0;
-  left:0;
-  z-index:$z-nav;
-  background-color: #FFFFFF;
-  .nav-a{
-    display: block;
-    width: 100%;
-    text-align: center;
-    clear: both;
-  }
+.nav-in-remove.nav-in-remove-active{
+  transition: 1s ease;
+  -webkit-transition: 1s ease;
+  -moz-transition: 1s ease;
+  -ms-transition: 1s ease;
 }

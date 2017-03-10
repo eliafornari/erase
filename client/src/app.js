@@ -119,11 +119,13 @@ angular.module('myApp', ["ngRoute", "ngAnimate", "ngResource"])
     })
 
     .when('/contact', {
-      templateUrl: 'views/contact.html'
+      templateUrl: 'views/contact.html',
+      controller: 'contactCtrl'
     })
 
     .when('/about', {
-      templateUrl: 'views/about.html'
+      templateUrl: 'views/about.html',
+      controller: 'aboutCtrl'
     })
 
 
@@ -158,9 +160,8 @@ angular.module('myApp', ["ngRoute", "ngAnimate", "ngResource"])
 
 
 
-  $rootScope.firstLoading = true;
+$rootScope.firstLoading = true;
 $rootScope.isChrome = false;
-
 $scope.isWrong = false;
 
   $rootScope.retrieveElement = function(id){
@@ -366,4 +367,5 @@ var service = require("./service.js");
 var nav = require("./nav.js");
 var home = require("./home.js");
 var about = require("./about.js");
+var contact = require("./contact.js");
 var zine = require("./zine.js");

@@ -4,7 +4,7 @@ angular.module('myApp')
 
 
 
-
+  $rootScope.firstLoading = false;
 
 
 

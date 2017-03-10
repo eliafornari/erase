@@ -1,7 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-angular.module('myApp').controller('aboutCtrl', function ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost) {});
+angular.module('myApp').controller('aboutCtrl', function ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost) {
+
+  $rootScope.firstLoading = false;
+});
 
 },{}],2:[function(require,module,exports){
 'use strict';
@@ -116,9 +119,11 @@ _angular2.default.module('myApp', ["ngRoute", "ngAnimate", "ngResource"]).run(['
     templateUrl: 'views/media.html',
     controller: 'mediaCtrl'
   }).when('/contact', {
-    templateUrl: 'views/contact.html'
+    templateUrl: 'views/contact.html',
+    controller: 'contactCtrl'
   }).when('/about', {
-    templateUrl: 'views/about.html'
+    templateUrl: 'views/about.html',
+    controller: 'aboutCtrl'
   }).when('/', {
     templateUrl: 'views/home/home.html',
     controller: 'homeCtrl'
@@ -140,7 +145,6 @@ _angular2.default.module('myApp', ["ngRoute", "ngAnimate", "ngResource"]).run(['
 
   $rootScope.firstLoading = true;
   $rootScope.isChrome = false;
-
   $scope.isWrong = false;
 
   $rootScope.retrieveElement = function (id) {
@@ -306,9 +310,18 @@ var service = require("./service.js");
 var nav = require("./nav.js");
 var home = require("./home.js");
 var about = require("./about.js");
+var contact = require("./contact.js");
 var zine = require("./zine.js");
 
-},{"./about.js":1,"./home.js":3,"./nav.js":4,"./service.js":5,"./vendor/jquery-ui.min.js":6,"./zine.js":7,"angular":15,"angular-animate":9,"angular-resource":11,"angular-route":13,"jquery":28,"prismic.io":36}],3:[function(require,module,exports){
+},{"./about.js":1,"./contact.js":3,"./home.js":4,"./nav.js":5,"./service.js":6,"./vendor/jquery-ui.min.js":7,"./zine.js":8,"angular":16,"angular-animate":10,"angular-resource":12,"angular-route":14,"jquery":29,"prismic.io":37}],3:[function(require,module,exports){
+'use strict';
+
+angular.module('myApp').controller('contactCtrl', function ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost) {
+
+  $rootScope.firstLoading = false;
+});
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 angular.module('myApp').controller('homeCtrl', function ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost) {
@@ -350,19 +363,20 @@ angular.module('myApp').controller('homeCtrl', function ($rootScope, $location, 
   };
 });
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 angular.module('myApp').controller('navCtrl', function ($scope, $location, $rootScope, $routeParams, $timeout, $http) {
 
   $rootScope.isNavOpen = false;
+  $rootScope.showNav = false;
 
-  $scope.openNav = function () {
-    $rootScope.isNavOpen = !$rootScope.isNavOpen;
+  $rootScope.openNav = function () {
+    $rootScope.showNav = !$rootScope.showNav;
   };
 
-  $scope.closeNav = function () {
-    $rootScope.isNavOpen = false;
+  $rootScope.closeNav = function () {
+    $rootScope.showNav = false;
   };
 
   $rootScope.isLocation = function (location) {
@@ -373,11 +387,18 @@ angular.module('myApp').controller('navCtrl', function ($scope, $location, $root
     }
   };
 
+  $rootScope.isFeed = true;
+
   $scope.$on('$routeChangeSuccess', function () {
     console.log($location.path());
     if ($location.path() != '/') {
       console.log('not home');
       $rootScope.pageLoading = false;
+    }
+    if ($scope.getFirstPath() == '' || $scope.getFirstPath() == 'zine' || $scope.getFirstPath() == 'project' || $scope.getFirstPath() == 'media') {
+      $rootScope.isFeed = true;
+    } else {
+      $rootScope.isFeed = false;
     }
     setTimeout(function () {
       $rootScope.pageLoading = false;
@@ -419,7 +440,7 @@ angular.module('myApp').controller('navCtrl', function ($scope, $location, $root
   };
 });
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 
 /* Services */
@@ -696,7 +717,7 @@ Service.service('check', function ($location, $rootScope) {
     };
 });
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -1828,7 +1849,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }));
 });
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 angular.module('myApp').controller('zineCtrl', function ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost, $routeParams) {
@@ -1882,7 +1903,7 @@ angular.module('myApp').controller('zineCtrl', function ($rootScope, $location, 
   };
 });
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.7
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -6030,11 +6051,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":8}],10:[function(require,module,exports){
+},{"./angular-animate":9}],11:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.7
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -6894,11 +6915,11 @@ angular.module('ngResource', ['ng']).
 
 })(window, window.angular);
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 require('./angular-resource');
 module.exports = 'ngResource';
 
-},{"./angular-resource":10}],12:[function(require,module,exports){
+},{"./angular-resource":11}],13:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.7
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -7965,11 +7986,11 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":12}],14:[function(require,module,exports){
+},{"./angular-route":13}],15:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.7
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -39443,11 +39464,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":14}],16:[function(require,module,exports){
+},{"./angular":15}],17:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -39573,9 +39594,9 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],17:[function(require,module,exports){
-
 },{}],18:[function(require,module,exports){
+
+},{}],19:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -39687,7 +39708,7 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":19}],19:[function(require,module,exports){
+},{"buffer":20}],20:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -41239,7 +41260,7 @@ function blitBuffer (src, dst, offset, length) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":16,"ieee754":24,"isarray":27}],20:[function(require,module,exports){
+},{"base64-js":17,"ieee754":25,"isarray":28}],21:[function(require,module,exports){
 module.exports = {
   "100": "Continue",
   "101": "Switching Protocols",
@@ -41304,7 +41325,7 @@ module.exports = {
   "511": "Network Authentication Required"
 }
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -41415,7 +41436,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":26}],22:[function(require,module,exports){
+},{"../../is-buffer/index.js":27}],23:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -41719,7 +41740,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 var http = require('http');
 
 var https = module.exports;
@@ -41735,7 +41756,7 @@ https.request = function (params, cb) {
     return http.request.call(this, params, cb);
 }
 
-},{"http":45}],24:[function(require,module,exports){
+},{"http":46}],25:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -41821,7 +41842,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -41846,7 +41867,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 /**
  * Determine if an object is Buffer
  *
@@ -41865,14 +41886,14 @@ module.exports = function (obj) {
     ))
 }
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.0.0
  * https://jquery.com/
@@ -51911,7 +51932,7 @@ if ( !noGlobal ) {
 return jQuery;
 } ) );
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -52712,7 +52733,7 @@ module.exports = {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./cache":30,"./documents":31,"./experiments":32,"./predicates":35,"./requests":37}],30:[function(require,module,exports){
+},{"./cache":31,"./documents":32,"./experiments":33,"./predicates":36,"./requests":38}],31:[function(require,module,exports){
 
 "use strict";
 
@@ -52767,7 +52788,7 @@ ApiCache.prototype = {
 
 module.exports = ApiCache;
 
-},{"./lru":34}],31:[function(require,module,exports){
+},{"./lru":35}],32:[function(require,module,exports){
 "use strict";
 
 /**
@@ -53353,7 +53374,7 @@ module.exports = {
   GroupDoc: GroupDoc
 };
 
-},{"./fragments":33}],32:[function(require,module,exports){
+},{"./fragments":34}],33:[function(require,module,exports){
 
 "use strict";
 
@@ -53438,7 +53459,7 @@ module.exports = {
   Variation: Variation
 };
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 "use strict";
 
 var documents = require('./documents');
@@ -54692,7 +54713,7 @@ module.exports = {
   insertSpans: insertSpans
 };
 
-},{"./documents":31}],34:[function(require,module,exports){
+},{"./documents":32}],35:[function(require,module,exports){
 
 /**
  * A doubly linked list-based Least Recently Used (LRU) cache. Will keep most
@@ -54945,7 +54966,7 @@ LRUCache.prototype.toString = function() {
 
 module.exports = LRUCache;
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 
 "use strict";
 
@@ -55227,7 +55248,7 @@ module.exports = {
 
 };
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 "use strict";
 
 var experiments = require('./experiments'),
@@ -55305,7 +55326,7 @@ module.exports = {
 
 module.exports.Prismic = module.exports; // Backward compatibility
 
-},{"./api":29,"./documents":31,"./experiments":32,"./fragments":33,"./predicates":35}],37:[function(require,module,exports){
+},{"./api":30,"./documents":32,"./experiments":33,"./fragments":34,"./predicates":36}],38:[function(require,module,exports){
 (function (process){
 
 "use strict";
@@ -55546,7 +55567,7 @@ module.exports = {
 };
 
 }).call(this,require('_process'))
-},{"../package.json":38,"_process":40,"http":45,"https":23,"url":57}],38:[function(require,module,exports){
+},{"../package.json":39,"_process":41,"http":46,"https":24,"url":58}],39:[function(require,module,exports){
 module.exports={
   "name": "prismic.io",
   "description": "JavaScript development kit for prismic.io",
@@ -55637,7 +55658,7 @@ module.exports={
   "readme": "ERROR: No README data found!"
 }
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -55684,7 +55705,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":40}],40:[function(require,module,exports){
+},{"_process":41}],41:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -55805,7 +55826,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -56342,7 +56363,7 @@ process.umask = function() { return 0; };
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -56428,7 +56449,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -56515,13 +56536,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":42,"./encode":43}],45:[function(require,module,exports){
+},{"./decode":43,"./encode":44}],46:[function(require,module,exports){
 (function (global){
 var ClientRequest = require('./lib/request')
 var extend = require('xtend')
@@ -56603,7 +56624,7 @@ http.METHODS = [
 	'UNSUBSCRIBE'
 ]
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./lib/request":47,"builtin-status-codes":20,"url":57,"xtend":60}],46:[function(require,module,exports){
+},{"./lib/request":48,"builtin-status-codes":21,"url":58,"xtend":61}],47:[function(require,module,exports){
 (function (global){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableByteStream)
 
@@ -56647,7 +56668,7 @@ function isFunction (value) {
 xhr = null // Help gc
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 (function (process,global,Buffer){
 var capability = require('./capability')
 var inherits = require('inherits')
@@ -56928,7 +56949,7 @@ var unsafeHeaders = [
 ]
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"./capability":46,"./response":48,"_process":40,"buffer":19,"inherits":25,"readable-stream":54,"to-arraybuffer":56}],48:[function(require,module,exports){
+},{"./capability":47,"./response":49,"_process":41,"buffer":20,"inherits":26,"readable-stream":55,"to-arraybuffer":57}],49:[function(require,module,exports){
 (function (process,global,Buffer){
 var capability = require('./capability')
 var inherits = require('inherits')
@@ -57112,7 +57133,7 @@ IncomingMessage.prototype._onXHRProgress = function () {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"./capability":46,"_process":40,"buffer":19,"inherits":25,"readable-stream":54}],49:[function(require,module,exports){
+},{"./capability":47,"_process":41,"buffer":20,"inherits":26,"readable-stream":55}],50:[function(require,module,exports){
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
@@ -57188,7 +57209,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":51,"./_stream_writable":53,"core-util-is":21,"inherits":25,"process-nextick-args":39}],50:[function(require,module,exports){
+},{"./_stream_readable":52,"./_stream_writable":54,"core-util-is":22,"inherits":26,"process-nextick-args":40}],51:[function(require,module,exports){
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
@@ -57215,7 +57236,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":52,"core-util-is":21,"inherits":25}],51:[function(require,module,exports){
+},{"./_stream_transform":53,"core-util-is":22,"inherits":26}],52:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -58111,7 +58132,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":49,"_process":40,"buffer":19,"buffer-shims":18,"core-util-is":21,"events":22,"inherits":25,"isarray":27,"process-nextick-args":39,"string_decoder/":55,"util":17}],52:[function(require,module,exports){
+},{"./_stream_duplex":50,"_process":41,"buffer":20,"buffer-shims":19,"core-util-is":22,"events":23,"inherits":26,"isarray":28,"process-nextick-args":40,"string_decoder/":56,"util":18}],53:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -58292,7 +58313,7 @@ function done(stream, er) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":49,"core-util-is":21,"inherits":25}],53:[function(require,module,exports){
+},{"./_stream_duplex":50,"core-util-is":22,"inherits":26}],54:[function(require,module,exports){
 (function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -58821,7 +58842,7 @@ function CorkedRequest(state) {
   };
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":49,"_process":40,"buffer":19,"buffer-shims":18,"core-util-is":21,"events":22,"inherits":25,"process-nextick-args":39,"util-deprecate":59}],54:[function(require,module,exports){
+},{"./_stream_duplex":50,"_process":41,"buffer":20,"buffer-shims":19,"core-util-is":22,"events":23,"inherits":26,"process-nextick-args":40,"util-deprecate":60}],55:[function(require,module,exports){
 (function (process){
 var Stream = (function (){
   try {
@@ -58841,7 +58862,7 @@ if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":49,"./lib/_stream_passthrough.js":50,"./lib/_stream_readable.js":51,"./lib/_stream_transform.js":52,"./lib/_stream_writable.js":53,"_process":40}],55:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":50,"./lib/_stream_passthrough.js":51,"./lib/_stream_readable.js":52,"./lib/_stream_transform.js":53,"./lib/_stream_writable.js":54,"_process":41}],56:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -59064,7 +59085,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":19}],56:[function(require,module,exports){
+},{"buffer":20}],57:[function(require,module,exports){
 var Buffer = require('buffer').Buffer
 
 module.exports = function (buf) {
@@ -59093,7 +59114,7 @@ module.exports = function (buf) {
 	}
 }
 
-},{"buffer":19}],57:[function(require,module,exports){
+},{"buffer":20}],58:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -59827,7 +59848,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":58,"punycode":41,"querystring":44}],58:[function(require,module,exports){
+},{"./util":59,"punycode":42,"querystring":45}],59:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -59845,7 +59866,7 @@ module.exports = {
   }
 };
 
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 (function (global){
 
 /**
@@ -59916,7 +59937,7 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],60:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;

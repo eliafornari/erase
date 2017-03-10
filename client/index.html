@@ -38,15 +38,36 @@
 
 
 
-  <body class="body">
+  <body class="body" ng-class="{'scrolledSplash': !firstLoading}">
+
+
+
+  <div class="splash" style="transform: translateY(-{{splashScroll}}px) !important;" ng-if="(!isDevice)" ng-show="firstLoading">
+    <!-- style="top:-{{splashScroll}}px !important;" -->
+    <splash-directive></splash-directive>
+  </div>
+
+
+  <div class="splash" ng-class="{'splash_gone':removeSplashMobile}" ng-if="isMobile && isDevice" ng-show="firstLoading">
+    <splash-directive></splash-directive>
+  </div>
+
+<nav-directive></nav-directive>
+
+<div class="pop" ng-click="openNav()">
+  <h1 class="pop-open" ng-if="!showNav">M</h1>
+  <h1 class="pop-close" ng-if="showNav">X</h1>
+</div>
 
 <logo-directive></logo-directive>
 
-
-
-    <main ng-view class='main page' ng-hide="pageLoading" ng-class="{'scrolledSplash': !firstLoading}">
+<div class="perspective-container" ng-class="{'scrolledSplash': !firstLoading}">
+  <div class="main-container" ng-class="{'scrolledSplash': !firstLoading, 'nav-in': showNav}">
+    <main ng-view class='main page' ng-hide="pageLoading" ng-class="{'scrolledSplash': !firstLoading, 'nav-in': showNav}">
     </main>
+  </div>
 
+</div>
 
 
   </body>
