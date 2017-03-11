@@ -395,7 +395,7 @@ angular.module('myApp').controller('navCtrl', function ($scope, $location, $root
       console.log('not home');
       $rootScope.pageLoading = false;
     }
-    if ($scope.getFirstPath() == '' || $scope.getFirstPath() == 'feed' || $scope.getFirstPath() == 'project' || $scope.getFirstPath() == 'media') {
+    if ($scope.getFirstPath() == '' || $scope.getFirstPath() == 'feed') {
       $rootScope.isFeed = true;
     } else {
       $rootScope.isFeed = false;

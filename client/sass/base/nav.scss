@@ -45,8 +45,14 @@
     @include h1();
     display: block;
     height:$line-height-h1;
-    @include hover-effect-color($almost-black, $white);
+    @include hover-effect-color($white,$almost-black);
   }
+}
+
+/*.....................ACTIVE CLASSES......................*/
+
+.active{
+  // color: $almost-black !important;
 }
 
 
