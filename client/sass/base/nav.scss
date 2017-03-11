@@ -8,6 +8,10 @@
   right:-30vw;
   z-index:$z-nav;
   background-color: #000000;
+  @include respond-to(phone){
+    width:50vw;
+    right:-50vw;
+  }
 }
 
 .pop{
@@ -26,7 +30,7 @@
   width: 600px;
   margin: auto;
   @include respond-to(phone){
-    width: 50vw;
+    width: 90%;
     margin: auto;
   }
 }
@@ -38,8 +42,7 @@
   vertical-align: top;
   margin-top: 8vh;
   @include respond-to(phone){
-    width: 30vw;
-    margin-top: 3vh;
+    width:50vw;
   }
   a{
     @include h1();

@@ -304,7 +304,16 @@ main.scrolledSplash {
   transition: inherit;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  overflow: hidden; }
+  overflow: hidden;
+  /*  @if $media == large-desktop {
+      @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
+    }*/ }
+  @media only screen and (min-width: 0px) and (max-width: 767px) {
+    .main-container.nav-in {
+      transform: translate3d(-40vw, 0, 0) rotateY(-16deg);
+      -webkit-transform: translate3d(-40vw, 0, 0) rotateY(-16deg);
+      -ms-transform: translate3d(-40vw, 0, 0) rotateY(-16deg);
+      -moz-transform: translate3d(-40vw, 0, 0) rotateY(-16deg); } }
 
 .main-container.nav-in-remove.nav-in-remove-active {
   height: 100vh;
@@ -368,7 +377,13 @@ main.scrolledSplash {
   transition: inherit;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  overflow: hidden; }
+  overflow: hidden;
+  /*  @if $media == large-desktop {
+      @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
+    }*/ }
+  @media only screen and (min-width: 0px) and (max-width: 767px) {
+    .logo.nav-in {
+      display: none; } }
 
 table {
   width: 100%;
@@ -400,7 +415,14 @@ table {
   top: 0;
   right: -30vw;
   z-index: 5;
-  background-color: #000000; }
+  background-color: #000000;
+  /*  @if $media == large-desktop {
+      @media only screen and (min-width: $break-large-desktop + 1) and (max-width: $break-infinite) { @content; }
+    }*/ }
+  @media only screen and (min-width: 0px) and (max-width: 767px) {
+    .nav {
+      width: 50vw;
+      right: -50vw; } }
 
 .pop {
   position: fixed;
@@ -418,7 +440,7 @@ table {
     }*/ }
   @media only screen and (min-width: 0px) and (max-width: 767px) {
     .nav-content {
-      width: 50vw;
+      width: 90%;
       margin: auto; } }
 
 .nav-list {
@@ -431,8 +453,7 @@ table {
     }*/ }
   @media only screen and (min-width: 0px) and (max-width: 767px) {
     .nav-list {
-      width: 30vw;
-      margin-top: 3vh; } }
+      width: 50vw; } }
   .nav-list a {
     font-size: 50px;
     line-height: 50px;

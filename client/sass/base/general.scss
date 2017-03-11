@@ -242,7 +242,15 @@ main.nav-in{
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   overflow: hidden;
+  @include respond-to(phone){
+    transform: translate3d(-40vw, 0, 0) rotateY(-16deg);
+    -webkit-transform: translate3d(-40vw, 0, 0) rotateY(-16deg);
+    -ms-transform: translate3d(-40vw, 0, 0) rotateY(-16deg);
+    -moz-transform: translate3d(-40vw, 0, 0) rotateY(-16deg);
+  }
 }
+
+
 .main-container.nav-in-remove.nav-in-remove-active{
   height: 100vh;
   overflow: hidden;
@@ -320,6 +328,9 @@ main.nav-in{
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   overflow: hidden;
+  @include respond-to(phone){
+    display: none;
+  }
 }
 
 
