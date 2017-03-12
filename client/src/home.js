@@ -1,5 +1,5 @@
 angular.module('myApp')
-.controller('homeCtrl',['$rootScope', '$location', '$window', '$scope', ($rootScope, $location, $window, $scope)=>{
+.controller('homeCtrl',['$rootScope', '$location', '$window', '$scope','anchorSmoothScroll', ($rootScope, $location, $window, $scope, anchorSmoothScroll)=>{
 
 
 $scope.isSplash = true;
