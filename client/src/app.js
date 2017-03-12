@@ -144,19 +144,19 @@ angular.module('myApp', ["ngRoute", "ngAnimate", "ngResource"])
 }]) //config
 
 
-.filter('trustUrl', function ($sce) {
+.filter('trustUrl', ['$sce', function ($sce) {
   return function(url) {
     // if (url){
       var trusted = $sce.trustAsResourceUrl(url);
       return trusted;
     // }
   };
-})
+}])
 
 
 
 
-.controller('appCtrl', ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost)=>{
+.controller('appCtrl', ['$rootScope', '$location', '$window', '$timeout', '$http', 'anchorSmoothScroll', '$scope', 'check', ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, check)=>{
 
 
 
@@ -187,7 +187,6 @@ $rootScope.getContentType = function(type, orderField){
                   var Data = response;
                   // if (type =='styling'){
                     $rootScope.Feed = response.results;
-                    console.log($rootScope.Feed);
                     $rootScope.$broadcast('dataReady');
                     // $rootScope.$apply();
                   // }
@@ -266,12 +265,10 @@ $rootScope.getContentType('', 'my.zine.date desc, my.image.date desc');
           //........checks the width
             $scope.mobileQuery=window.matchMedia( "(max-width: 767px)" );
             $rootScope.isMobile=$scope.mobileQuery.matches;
-            console.log("isMobile:"+$rootScope.isMobile);
 
           //.........returning true if device
             if ($scope.checkDevice.any()){
               $rootScope.isDevice= true;
-              console.log("isDevice:"+$rootScope.isDevice);
             }else{
                 $rootScope.isDevice=false;
             }
@@ -333,11 +330,11 @@ $rootScope.getContentType('', 'my.zine.date desc, my.image.date desc');
 
 
 
-})// end of appCtrl
+}])// end of appCtrl
 
 
 
-.directive('logoDirective', function($rootScope, $location, $window, $timeout) {
+.directive('logoDirective', function() {
   return {
     restrict: 'E',
     templateUrl: 'views/components/logo.html',
@@ -348,7 +345,7 @@ $rootScope.getContentType('', 'my.zine.date desc, my.image.date desc');
   };
 })
 
-.directive('splashDirective', function($rootScope, $location, $window, $routeParams, $timeout) {
+.directive('splashDirective', function() {
   return {
     restrict: 'E',
     templateUrl: 'views/home/splash.html',

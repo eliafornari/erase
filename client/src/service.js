@@ -57,7 +57,7 @@ Service.factory(
 
 
 
-Service.service('anchorSmoothScroll', function($location, $rootScope){
+Service.service('anchorSmoothScroll',['$location', '$rootScope', function($location, $rootScope){
 
     this.scrollTo = function(eID) {
 
@@ -116,17 +116,10 @@ Service.service('anchorSmoothScroll', function($location, $rootScope){
   this.scrollHorizontally = function(section) {
 
        var element = $rootScope.retrieveElement("weare-slider");
-
        var toElement = $rootScope.retrieveElement(section);
-
        var number = toElement[0].offsetLeft;
-
-       console.log(toElement);
-       console.log(number);
-
       // event.preventDefault();
 
-        //
         element.stop().animate({
           scrollLeft: number
         },500,
@@ -221,14 +214,14 @@ Service.service('anchorSmoothScroll', function($location, $rootScope){
 
 
 
-});
+}]);
 
 
 
 
 
 
-Service.service('check', function($location, $rootScope){
+Service.service('check', ['$location', '$rootScope', function($location, $rootScope){
   this.size = function() {
 
 
@@ -329,4 +322,4 @@ Service.service('check', function($location, $rootScope){
           }
         $rootScope.landscapeFunction();
     };
-})
+}])

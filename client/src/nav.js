@@ -1,7 +1,7 @@
 angular.module('myApp')
 
 
-.controller('navCtrl', function($scope, $location, $rootScope, $routeParams, $timeout,	$http){
+.controller('navCtrl', ['$scope', '$location', '$rootScope', '$routeParams', '$timeout',	'$http', function($scope, $location, $rootScope, $routeParams, $timeout,	$http){
 
   $rootScope.isNavOpen = false;
   $rootScope.showNav = false;
@@ -26,9 +26,7 @@ angular.module('myApp')
 
 
   $scope.$on('$routeChangeSuccess', function(){
-    console.log($location.path());
     if($location.path() != '/'){
-      console.log('not home');
         $rootScope.pageLoading = false;
     }
     if($scope.getFirstPath()=='' || $scope.getFirstPath()=='feed'){
@@ -68,11 +66,11 @@ angular.module('myApp')
   }
 
 
-})
+}])
 
 
 
-.directive('navDirective', function($rootScope, $location, $window, $routeParams, $timeout) {
+.directive('navDirective', function() {
   return {
     restrict: 'E',
     templateUrl: 'views/components/nav.html',

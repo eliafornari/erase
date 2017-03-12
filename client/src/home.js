@@ -1,5 +1,5 @@
 angular.module('myApp')
-.controller('homeCtrl', ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost)=>{
+.controller('homeCtrl',['$rootScope', '$location', '$window', '$scope', ($rootScope, $location, $window, $scope)=>{
 
 
 $scope.isSplash = true;
@@ -52,4 +52,4 @@ $rootScope.enter=function(){
 
 
 
-});
+}]);

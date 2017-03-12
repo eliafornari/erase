@@ -1,5 +1,5 @@
 angular.module('myApp')
-.controller('aboutCtrl', ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost)=>{
+.controller('aboutCtrl', ['$rootScope', '$location', '$window', '$scope', ($rootScope, $location, $window, $scope)=>{
 
 
 
@@ -8,4 +8,4 @@ angular.module('myApp')
 
 
 
-});
+}]);

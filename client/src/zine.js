@@ -1,5 +1,5 @@
 angular.module('myApp')
-.controller('zineCtrl', ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost, $routeParams)=>{
+.controller('zineCtrl', ['$rootScope', '$location', '$routeParams','$scope', ($rootScope, $location, $routeParams, $scope)=>{
 
 $rootScope.Zine={};
 $rootScope.firstLoading=false;
@@ -11,18 +11,14 @@ $rootScope.thisZine =()=>{
         url: $rootScope.Feed[i].data['zine.page'].value[0].image.value.main.url,
         index: 0
       }
-      console.log($rootScope.Zine.current);
     }
   }
 }
 
 if($rootScope.Feed){
   $rootScope.thisZine();
-  console.log("data is here", $rootScope.Feed);
 }else{
-  console.log("wait for the data");
   $rootScope.$on('dataReady', function(){
-    console.log("data hereee");
     $rootScope.thisZine();
   })
 }
@@ -54,4 +50,4 @@ $scope.prevZine=(index)=>{
 
 
 
-});
+}]);

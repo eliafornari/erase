@@ -1,6 +1,6 @@
 angular.module('myApp')
-.controller('contactCtrl', ($rootScope, $location, $window, $timeout, $http, anchorSmoothScroll, $scope, $anchorScroll, $interval, check, transformRequestAsFormPost)=>{
+.controller('contactCtrl', ['$rootScope', '$scope',($rootScope, $scope)=>{
 
   $rootScope.firstLoading = false;
 
-});
+}]);
