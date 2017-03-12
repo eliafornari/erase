@@ -12,10 +12,6 @@ let app = express();
 
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/../client');
-app.use( express.static(__dirname + "/../client") );
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(function(req, res, next) {
     if((!req.secure) && (req.get('X-Forwarded-Proto') !== 'https')) {
         res.redirect('https://' + req.get('Host') + req.url);
@@ -23,6 +19,11 @@ app.use(function(req, res, next) {
     else
         next();
 });
+app.set('views', __dirname + '/../client');
+app.use( express.static(__dirname + "/../client") );
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 
 
 
