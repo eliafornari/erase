@@ -9,10 +9,10 @@
           <tr>
             <td>
 
-              <a href="/feed/{{f.data['feed.documentlink'].value.document.type}}/{{f.data['feed.documentlink'].value.document.uid}" class="home-feed-a" ng-if="f.data['feed.documentlink'].value.document.type=='zine'">
+              <a href="/feed/{{f.data['feed.documentlink'].value.document.type}}/{{f.data['feed.documentlink'].value.document.uid}}" class="home-feed-a" ng-if="f.data['feed.documentlink'].value.document.type=='zine'">
                 <img src="{{f.data['feed.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-zineimg" >
               </a>
-              <img src="{{f.data['feed.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-image" ng-if="f.data['feed.documentlink'].value.document.type=='image'" style="left:{{f.data['feed.left'].value}}vw;width:{{f.data['feed.width'].value}}vw">
+              <img src="{{f.data['feed.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-image" ng-if="!f.data['feed.documentlink'].value" style="left:{{f.data['feed.left'].value}}vw;width:{{f.data['feed.width'].value}}vw">
             </td>
           </tr>
         </table>

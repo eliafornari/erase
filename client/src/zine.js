@@ -1,27 +1,61 @@
 angular.module('myApp')
-.controller('zineCtrl', ['$rootScope', '$location', '$routeParams','$scope', ($rootScope, $location, $routeParams, $scope)=>{
+.controller('zineCtrl', ['$rootScope', '$location', '$routeParams','$scope', '$http', ($rootScope, $location, $routeParams, $scope, $http)=>{
 
 $rootScope.Zine={};
 $rootScope.firstLoading=false;
-$rootScope.thisZine =()=>{
-  for(var i in $rootScope.Feed){
-    if($rootScope.Feed[i].uid == $routeParams.zine){
-      $rootScope.Zine=$rootScope.Feed[i];
+
+$scope.getSingle=()=>{
+
+  $http({
+  method: 'GET',
+  url: '/api/prismic/get/single?type=zine&uid='+$routeParams.zine
+    }).then(function (response) {
+      $rootScope.Zine=response.data;
       $rootScope.Zine.current={
-        url: $rootScope.Feed[i].data['zine.page'].value[0].image.value.main.url,
+        url: $rootScope.Zine.data['zine.page'].value[0].image.value.main.url,
         index: 0
       }
-    }
-  }
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    }, function (error) {
+      console.log(error);
+      console.log("second");
+
+
+    });
+
+
+
 }
 
-if($rootScope.Feed){
-  $rootScope.thisZine();
-}else{
-  $rootScope.$on('dataReady', function(){
-    $rootScope.thisZine();
-  })
-}
+$scope.getSingle();
+
+
+
+
+
+
+
+// $rootScope.thisZine =()=>{
+//   for(var i in $rootScope.Feed){
+//     if($rootScope.Feed[i].uid == $routeParams.zine){
+//       $rootScope.Zine=$rootScope.Feed[i];
+//
+//       $rootScope.Zine.current={
+//         url: $rootScope.Feed[i].data['zine.page'].value[0].image.value.main.url,
+//         index: 0
+//       }
+//     }
+//   }
+// }
+
+// if($rootScope.Feed){
+//   $rootScope.thisZine();
+// }else{
+//   $rootScope.$on('dataReady', function(){
+//     $rootScope.thisZine();
+//   })
+// }
 
 
 
