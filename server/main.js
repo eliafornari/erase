@@ -13,13 +13,13 @@ let prismic = require('./api/prismic');
 
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
-// app.use(function(req, res, next) {
-//     if((!req.secure) && (req.get('X-Forwarded-Proto') !== 'https')) {
-//         res.redirect('https://' + req.get('Host') + req.url);
-//     }
-//     else
-//         next();
-// });
+app.use(function(req, res, next) {
+    if((!req.secure) && (req.get('X-Forwarded-Proto') !== 'https')) {
+        res.redirect('https://' + req.get('Host') + req.url);
+    }
+    else
+        next();
+});
 app.set('views', __dirname + '/../client');
 app.use( express.static(__dirname + "/../client") );
 app.use(bodyParser.json()); // support json encoded bodies
