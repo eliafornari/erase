@@ -9,10 +9,23 @@
           <tr>
             <td>
 
-              <a href="/feed/{{f.data['feed.documentlink'].value.document.type}}/{{f.data['feed.documentlink'].value.document.uid}}" class="home-feed-a" ng-if="f.data['feed.documentlink'].value.document.type=='zine'">
+              <!-- detail -->
+              <a href="/feed/{{f.data['feed.documentlink'].value.document.type}}/{{f.data['feed.documentlink'].value.document.uid}}" class="home-feed-a"
+              ng-if="f.data['feed.documentlink'].value.document.type=='zine' && !f.data['feed.flip'].value">
                 <img src="{{f.data['feed.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-zineimg" >
               </a>
-              <img src="{{f.data['feed.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-image" ng-if="!f.data['feed.documentlink'].value" style="left:{{f.data['feed.left'].value}}vw;width:{{f.data['feed.width'].value}}vw">
+
+              <!-- image -->
+              <img src="{{f.data['feed.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-image" ng-if="!f.data['feed.documentlink'].value && !f.data['feed.flip'].value" style="left:{{f.data['feed.left'].value}}vw;width:{{f.data['feed.width'].value}}vw">
+
+              <!-- flip -->
+              <div class="feed-flip" ng-init="flip=0"
+                ng-if="f.data['feed.flip'].value"
+              >
+                <img src="{{f.data['feed.flip'].value[flip].image.value.main.url}}" alt="" ng-click="(flip=thisFlip(flip, f.data['feed.flip'].value.length))">
+              </div>
+
+
             </td>
           </tr>
         </table>
