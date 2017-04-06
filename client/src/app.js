@@ -174,22 +174,23 @@ $scope.isWrong = false;
 
 $rootScope.Feed;
 
-$rootScope.getContentType = function(type, orderField){
+$rootScope.getContentType = function(type, orderField, page){
 
       Prismic.Api('https://erase.cdn.prismic.io/api', function (err, Api) {
           Api.form('everything')
               .ref(Api.master())
-              .query('')
+              .query(Prismic.Predicates.at("document.type", type))
               .orderings('['+orderField+']')
-              .pageSize(100)
+              .pageSize(page)
               .submit(function (err, response) {
 
                   var Data = response;
                   // if (type =='styling'){
-                    $rootScope.Feed = response.results;
+                    $rootScope.Feed = response;
                     $rootScope.$broadcast('dataReady');
                     // $rootScope.$apply();
                   // }
+                  console.log(Data);
 
 
                   // The documents object contains a Response object with all documents of type "product".
@@ -210,7 +211,7 @@ $rootScope.getContentType = function(type, orderField){
 
 };
 
-$rootScope.getContentType('', 'my.zine.date desc, my.image.date desc');
+$rootScope.getContentType('feed', 'my.feed.date desc', 0);
 
 
 

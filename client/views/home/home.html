@@ -4,14 +4,15 @@
 
   <div class="home-feed">
     <ul class="home-feed-ul">
-      <li ng-repeat="f in Feed" class="home-feed-li">
+      <li ng-repeat="f in Feed.results" class="home-feed-li">
         <table>
           <tr>
             <td>
-              <a href="/feed/{{f.type}}/{{f.uid}}" class="home-feed-a" ng-if="f.type=='zine'">
-                <img src="{{f.data['zine.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-zineimg" >
+
+              <a href="/feed/{{f.data['feed.documentlink'].value.document.type}}/{{f.data['feed.documentlink'].value.document.uid}" class="home-feed-a" ng-if="f.data['feed.documentlink'].value.document.type=='zine'">
+                <img src="{{f.data['feed.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-zineimg" >
               </a>
-              <img src="{{f.data['image.image'].value.main.url}}" alt="{{f.uid}}" class="home-feed-image" ng-if="f.type=='image'" style="left:{{f.data['image.left'].value}}vw;width:{{f.data['image.width'].value}}vw">
+              <img src="{{f.data['feed.cover'].value.main.url}}" alt="{{f.uid}}" class="home-feed-image" ng-if="f.data['feed.documentlink'].value.document.type=='image'" style="left:{{f.data['feed.left'].value}}vw;width:{{f.data['feed.width'].value}}vw">
             </td>
           </tr>
         </table>
