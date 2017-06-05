@@ -12,11 +12,9 @@ $rootScope.enter=function(){
 
 
 $scope.thisFlip=(index, max)=>{
-  console.log(index, max);
   if(index>=(max-1)){
     return 0
   }else{
-    console.log(index+1);
     return index+1
   }
 }
@@ -24,11 +22,6 @@ $scope.thisFlip=(index, max)=>{
 
   $rootScope.splashScroll=0;
   $rootScope.windowHeight = $window.innerHeight;
-  // if ($rootScope.isMobile && $rootScope.isDevice){
-  //   $rootScope.firstLoading = false;
-  //   $rootScope.windowHeight = $window.innerHeight + 60;
-  // }else{
-
 
     angular.element($window).bind("scroll", function() {
 

@@ -52,6 +52,14 @@
   }
 }
 
+
+.shop-link{
+  position: fixed;
+  left: $margin-sides;
+  bottom: $margin-sides;
+  z-index: $z-nav;
+}
+
 /*.....................ACTIVE CLASSES......................*/
 
 .active{
